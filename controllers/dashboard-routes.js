@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-// Render home page
+// Render dashboard page
 router.get('/', (req, res) => {
-    res.render('homepage', {
-        loggedIn: req.session.loggedIn
+    res.render('dashboard', {
+        loggedIn: true
     });
 });
 
