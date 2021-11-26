@@ -1,13 +1,18 @@
-//TODO:
-//import all models
-
+const seedUsers = require('./user-seeds');
 const sequelize = require('../config/connection');
+const seedCategories = require('./category-seeds');
+
 
 async function seedAllModels(){
 
     await sequelize.sync({ force: true });
+    console.log("Connected to MySQL");
 
-    console.log('No models to seed');
+    await seedUsers();
+    console.log("Users Seeded");
+
+    await seedCategories();
+    console.log("Categories Seeded");
 
     process.exit(0);
 }
