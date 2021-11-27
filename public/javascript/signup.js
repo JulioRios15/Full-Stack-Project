@@ -1,3 +1,7 @@
+let signupModal = new bootstrap.Modal(document.getElementById('signup-modal'));
+const signupButton = document.querySelector("#signup-button");
+const categoryItems = document.getElementsByClassName('category-item');
+
 async function signupFormHandler(event){
     event.preventDefault();
     const email = document.querySelector('#signup-email').value.trim();
@@ -21,4 +25,28 @@ async function signupFormHandler(event){
     }
 }
 
+function showModal(){
+    signupModal.show()
+}
+function hideModal(){
+    signupModal.hide();
+}
+
+function getSelectedCategories(){
+    //string array of selected categories
+    let data = [];
+
+    for (let i = 0; i < categoryItems.length; i++) {
+        const checkbox = categoryItems[i].querySelector('input');
+        const label = categoryItems[i].querySelector('label');
+
+        if(checkbox.checked){
+            data.push(label.innerHTML);
+        }
+    }
+
+    return data;
+}
+
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+signupButton.addEventListener('click', showModal);
