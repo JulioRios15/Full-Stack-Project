@@ -21,6 +21,17 @@
             <label class="form-label">Password</label>
             <input type="password" class="form-control" id="signup-password">
           </div>
+
+          <div class="mb-3">
+            <label class="form-label">Categories</label>
+              {{#each category}}  
+                <div class="mb-3 category-item">
+                  <input type="checkbox" class="form-check-input" id="category-input">
+                  <label id="category-label">{{category_name}}</label>
+                </div>
+              {{/each}}
+          </div>
+
         </form>
       </div>
       <div class="modal-footer">
