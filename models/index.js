@@ -4,7 +4,7 @@ const Category = require('./Category');
 const UserCategory = require('./UserCategory');
 
 //TODO: 
-// Create Assosiations
+// Create Associations
 
 User.belongsToMany(Category, {
 through: UserCategory,
