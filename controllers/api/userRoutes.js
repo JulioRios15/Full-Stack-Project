@@ -1,34 +1,45 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, UserCategory, Category } = require('../../models');
 
 //Create a new user
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
     //Destroy data from request
-    const {username, email, password} = req.body;
+    const {username, email, password, categories} = req.body;
 
-    //Attempt to create a new user
-    User.create({
-        username,
-        email,
-        password,
-    })
-    .then(dbUserData => {
+    try {
+        //Attempt to create a new user
+        const userData = await User.create({username, email, password});
+
+        // if we have categories selected
+        if(categories && categories.length){
+            const categoriesData = await Category.findAll({where: {category_name: categories}});
+            
+            const userCategoryDataArr = categoriesData.map((category) => {
+                return {
+                    user_id: userData.id,
+                    category_id: category.id
+                }
+            });
+
+            UserCategory.bulkCreate(userCategoryDataArr);
+        }
+       
         //Save user data in session
         req.session.save(() => {
-            console.log("Session", req.session);
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
             req.session.loggedIn = true;
 
             //response ok status with json user data
-            res.status(201).json(dbUserData);
+            res.status(201).json(userData);
         });
-        
-    })
-    .catch(error => {
-        console.log(error);
-        res.status(500).json(error);
-    })
+            
+    } catch (error) {
+        res.status(500).json({
+            message: "unable to create user",
+            error
+        });
+    }
 });
 
 //Login Route
@@ -80,6 +91,29 @@ router.post('/logout', (req, res) => {
     } else {
         res.status(404).end();
     }
+});
+
+router.get('/:id', (req, res) => {
+    const {id} = req.params;
+
+    User.findOne({
+        attributes: ["id", "username", "email"],
+        where: {
+            id: id
+        },
+        include: [
+            {
+                model: Category,
+            }
+        ]
+    })
+    .then(userCategoryData => {
+        res.status(200).json(userCategoryData);
+    })
+    .catch(error => {
+        res.status(500).json(error);
+    })
+
 });
 
 module.exports = router;

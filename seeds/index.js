@@ -2,6 +2,7 @@ const seedUsers = require('./user-seeds');
 const sequelize = require('../config/connection');
 const seedCategories = require('./category-seeds');
 const seedPosts = require('./post-seeds');
+const seedUserCategory = require('./user-category-seeds');
 
 
 async function seedAllModels(){
@@ -17,6 +18,8 @@ async function seedAllModels(){
 
     await seedPosts();
     console.log("Posts Seeded");
+    await seedUserCategory()
+    console.log("User Category Seeded");
 
     process.exit(0);
 }

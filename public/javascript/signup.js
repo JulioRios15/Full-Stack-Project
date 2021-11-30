@@ -7,17 +7,16 @@ async function signupFormHandler(event){
     const email = document.querySelector('#signup-email').value.trim();
     const username = document.querySelector('#signup-username').value.trim();
     const password = document.querySelector('#signup-password').value.trim();
+    const categories = getSelectedCategories();
 
     if(email && username && password){
         const response = await fetch('api/users', {
             method: 'post',
-            body: JSON.stringify({email, username, password}),
+            body: JSON.stringify({email, username, password, categories}),
             headers: {'Content-Type': 'application/json'}
         });
 
         if(response.ok){
-            //TODO:
-            // repalce dashboard page with categories option selections page
             document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
