@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 //Get All posts or get all post from user selected categories
 router.get('/category', async (req, res) => {
     try {
-        const userId = req.session.user_id || 3;
+        const userId = req.session.user_id;
         const UserCategoriesData = await UserCategory.findAll({where: {
             user_id: userId
         }});
