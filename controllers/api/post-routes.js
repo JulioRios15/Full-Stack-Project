@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 //Get All posts or get all post from user selected categories
 router.get('/category', async (req, res) => {
     try {
@@ -87,6 +88,6 @@ router.post('/', upload.single('file'), async (req, res) => {
         return res.status(500).json(error)
     }
 
-})
+});
 
 module.exports = router;

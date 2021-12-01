@@ -11,26 +11,18 @@
 </head>
 
 <body>
-      <nav>
+      <nav class="navbar">
         {{#if loggedIn}}
-        <a href="/dashboard" class="btn btn-outline-primary">dashboard</a>
-        <button id="logout" class="btn btn-outline-primary">logout</button>
+  
+        {{> navs/authenticated-nav}}
+
+        
+
+
         {{else}}
 
-        <button 
-        class="btn btn-outline-primary"
-        id="login-button"
-        type="button",    
-        >Login</button>
+        {{> navs/unauthenticated-nav}}
 
-        <button 
-        class="btn btn-outline-primary"
-        id="signup-button"
-        type="button", 
-        >Sign up</button>
-
-        {{> modals/login-modal}}
-        {{> modals/signup-modal}}
         {{/if}}
         
     </nav>
