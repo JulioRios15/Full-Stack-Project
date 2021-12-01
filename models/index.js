@@ -13,6 +13,10 @@ User.hasMany(Post, {
 Post.belongsTo(User, {
     foreignKey: 'user_id'
   });
+
+Post.belongsTo(Category, {
+  foreignKey: "category_id"
+});
 // Category.belongsTo(User, {
 //     foreignKey: 'user_id'
 //  });
