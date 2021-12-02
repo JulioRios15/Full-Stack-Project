@@ -6,7 +6,6 @@
 An interactive social media app that focuses on action sports. It allows the user to create an account, select their action sports preferences, and then displays them content of the categories they selected. The user is also able to upload images of their own to specific categories. 
 
 ## Table of Contents
-* [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
 * [Questions](#questions)
