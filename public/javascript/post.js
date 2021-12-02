@@ -16,21 +16,15 @@ async function addPostHandler(event){
     const categoryName = postCategory.value.trim();
     const imageFile = postImage.files[0];
 
-    console.log(imageFile);
-
     const formData = new FormData();
     formData.append("image", imageFile, imageFile.name);
 
     const url = `/api/posts/?category_name=${categoryName}&title=${title}`;
-    const response =  await fetch(url, {
-        method: 'post',
-        data: formData,  
-        headers: {
-            "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryIn312MOjBWdkffIM"
-        }    
-    });
 
-    console.log(response);
+    const response =  await fetch(url, {
+        method: 'POST',
+        body: formData,  
+    });
 
 }
 function showModal(){
