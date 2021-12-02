@@ -26,6 +26,11 @@ async function addPostHandler(event){
         body: formData,  
     });
 
+    if(response.ok){
+        hideModal();
+        location.reload();
+    }
+
 }
 function showModal(){
     postModal.show();
