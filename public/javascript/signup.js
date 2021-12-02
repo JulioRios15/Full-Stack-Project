@@ -24,6 +24,7 @@ async function signupFormHandler(event){
     }
 }
 
+//Modal Functions
 function showModal(){
     signupModal.show()
 }
