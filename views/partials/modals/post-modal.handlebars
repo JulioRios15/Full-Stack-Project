@@ -6,16 +6,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="post-form" id="post-form">
+        <form class="post-form" id="post-form" enctype="multipart/form-data" method="POST">
 
           <div class="mb-3">
             <label class="form-label">Title</label>
-            <input type="text" class="form-control" id="post-title">
+            <input type="text" class="form-control" id="post-title" required>
           </div>
 
          <div class="mb-3">
             <label class="form-label">Choose a category</label>
-                <select name="category" id="categorySelect">
+                <select name="category" id="post-category" required>
                     {{#each category}}
                     <option value={{category_name}}>{{category_name}}</option>
                     {{/each}}
@@ -23,19 +23,16 @@
                     
           </div>
 
-          <div>
-            <form enctype="multipart/form-data" action="uploader.php" method="POST">
-            <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-            Choose a file to upload: <input name="uploadedfile" type="file" /><br />
-            </form>
-
-          </div>
+          <div class="mb-3">      
+            Choose a file to upload: 
+              <input name="image" type="file" accept="image/*", id="post-image" required />        
+        </div>
       </form>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" form="post-form" class="btn btn-outline-primary" id="continue-btn">Continue</button>
+        <button type="submit" form="post-form" class="btn btn-outline-success" id="add-post-btn">Add post</button>
       </div>
     </div>
   </div>

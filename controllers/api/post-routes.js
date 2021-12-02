@@ -3,6 +3,8 @@ const { Post, User, Category, UserCategory } = require('../../models');
 const {Op} = require('sequelize')
 const upload = require('../../middlewares/multer');
 
+
+
 // get posts
 router.get('/', (req, res) => {
     console.log('======================');
@@ -66,15 +68,19 @@ router.get('/category', async (req, res) => {
     }
 });
 
-router.post('/', upload.single('file'), async (req, res) => {
-    const {title, category_name} = req.body;
+router.post('/', upload.single('image'), async (req, res) => {
+
+    console.log(req.file);
+    const {title, category_name} = req.query;
     const fileName = req.file.filename;
     const image_src = `images/${category_name}/${fileName}`;
     const userId = req.session.user_id;
 
     try {
-        const category = await Category.findOne({where: {category_name}});
+        //if(!req.file) throw Error("Missing File");
 
+       
+        const category = await Category.findOne({where: {category_name}});
         const newPost = await Post.create({
             title,
             image_src,
@@ -82,8 +88,8 @@ router.post('/', upload.single('file'), async (req, res) => {
             category_id: category.id
         });
 
-        return res.status(200).json(newPost);
-        
+        return res.status(201).json(newPost);
+       
     } catch (error) {
         return res.status(500).json(error)
     }
