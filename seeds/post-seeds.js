@@ -171,6 +171,12 @@ const postData = [
         category_id: 4
     },
     {
+        title: "Race day!!",
+        image_src: "images/Motocross/michael-weir-AcQbPfXoSD0-unsplash.jpg",
+        user_id: 1,
+        category_id: 4
+    },
+    {
         title: "Felipe Insane Air",
         image_src: "images/Snowboarding/felipe-giacometti-sawa7hivsRs-unsplash.jpg",
         user_id: 1,
@@ -179,6 +185,12 @@ const postData = [
     {
         title: "Snow",
         image_src: "images/Snowboarding/alesia-kazantceva-9-dHYri9BOE-unsplash.jpg",
+        user_id: 2,
+        category_id: 5
+    },
+    {
+        title: "Indy Grab!!",
+        image_src: "images/Snowboarding/go-montgenevre-QzUsG1EieqE-unsplash.jpg",
         user_id: 2,
         category_id: 5
     },
