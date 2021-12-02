@@ -123,7 +123,7 @@ const postData = [
     },
     {
         title: "Shredding",
-        image_src: "images/Surfing/jeremy-bishop-cmt3JdS5MC4-unsplash.jpgg",
+        image_src: "images/Surfing/jeremy-bishop-cmt3JdS5MC4-unsplash.jpg",
         user_id: 1,
         category_id: 2
     },
@@ -152,7 +152,7 @@ const postData = [
         category_id: 3
     },
     {
-        title: "Watch out"!!
+        title: "Watch out!!",
         image_src: "images/BMX/fachy-marin-0HLGDvxVh8E-unsplash.jpg",
         user_id: 2,
         category_id: 3
